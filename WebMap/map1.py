@@ -31,5 +31,8 @@ def iconColor(el):
 for lt,ln,nm,el in zip(lat,lon,name,elev):
     fg.add_child(folium.Marker(location=[lt,ln],popup=str(nm)+" "+str(el),icon=folium.Icon(color=iconColor(el))))
 
+fg.add_child(folium.GeoJson(data=(open('world.json','r',encoding='utf-8-sig').read())))
+
+
 map.add_child(fg)
 map.save("Map1.html")
