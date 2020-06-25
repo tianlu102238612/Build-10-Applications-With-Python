@@ -15,6 +15,10 @@ import json
 import glob
 from pathlib import Path
 import random
+from hoverable import HoverBehavior
+from kivy.animation import Animation
+from kivy.uix.image import Image
+from kivy.uix.behaviors import ButtonBehavior
 
 Builder.load_file('design.kv')
 
@@ -62,7 +66,10 @@ class LoginSuccessScreen(Screen):
             self.ids.quote.text = random.choice(quotes)
         else:
             self.ids.quote.text = "Try another feeling"
-    
+
+class ImageButton(ButtonBehavior,HoverBehavior,Image):
+    pass
+        
     
 class RootWidget(ScreenManager):
     pass
