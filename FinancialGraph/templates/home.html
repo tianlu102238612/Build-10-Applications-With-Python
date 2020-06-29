@@ -5,10 +5,16 @@
 <link rel="stylesheet" href="{{url_for('static',filename='css/main.css')}}">
 </head>
 <body>
+    <header>
+        <ul class="menu>
+            <li><a href="{{url_for('home')}}">Home</a></li>
+            <li><a href="{{url_for('about')}}">About</a></li>
+            <li><a href="{{url_for('plot')}}">Plot</a></li>
+        </ul>
+    </header>
     <h2>Home Page</h2>
     <h3>This is a test website</h3>
-    <a href="{{url_for('about')}}">About Page</a>
-    <a href="{{url_for('plot')}}">Plot Page</a>
+    
     
   </body>
 </html>
