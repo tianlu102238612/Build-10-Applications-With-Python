@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+<h1>Flask app</h1>
+<link rel="stylesheet" href="{{url_for('static',filename='css/main.css')}}">
+<script type="text/javascript" src={{cdn_js | safe}}></script>
+</head>
+<body>
+    <h2>Plot Page</h2>
+    {{script1 | safe}}
+    {{div1 | safe}}
+  </body>
+</html>
