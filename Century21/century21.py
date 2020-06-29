@@ -13,21 +13,35 @@ r = requests.get("https://www.century21.com.au/properties-for-sale?page=1&search
 c = r.content
 soup = BeautifulSoup(c,"html.parser")
 
+
 allDetails = soup.find_all("div",{"class":"details"})
-allCaptions = soup.find_all("address")
+allAddresses = soup.find_all("address")
+allIcons = soup.find_all("div",{"class":"icons"})
 
 prices = []
-addresses = []
-rooms = []
 suburbs = []
+streets = []
+bedrooms = []
+bathrooms = []
+garages = []
 
 
-for caption in allCaptions:
-    address = caption.text.replace("\n","")
-    suburb = caption.find_all("span",{"class":"suburb oneline"})
-    
+for address in allAddresses:
+    suburb = address.find_all("span")[0].text
+    street = address.find_all("span")[1].text
+    suburbs.append(suburb)
+    streets.append(street)
 
 
 for item in allDetails:
     price = item.find("span",{"class":"pricetext"}).text.replace("\n","").replace(" ","")
     prices.append(price)
+    
+for item in allIcons:
+    bedroom = item.find_all("span")[0].text
+    bathroom = item.find_all("span")[1].text
+    garage = item.find_all("span")[2].text
+    bedrooms.append(bedroom)
+    bathrooms.append(bathroom)
+    garages.append(garage)
+    
