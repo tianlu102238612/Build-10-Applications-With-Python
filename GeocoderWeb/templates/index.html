@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+    <Title>Geocoder Web Service</Title>
+    <head>
+        <link href="../static/main.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class = "container">
+            <h1>Super Geocoder</h1>
+            <h3>Please upload your CSV file. The file should have a column named address or Address.</h3>
+            <form action="/upload/" method="post" enctype="multipart/form-data">
+                <input type="file" accept=".csv" name="selectedFile" id="selectedFile">
+                <button type="submit">Submit</button>
+                 <div class = "displayFile">
+                    {% for table in tables %}
+                    {{ table|safe }}
+                    {% endfor %}
+                 </div>
+                 <div class = "errorMsg">
+                    {{ errorMsg|safe }}
+                 </div>
+            </form>
+            <form action="/download/">
+                <button type="submit">Download File</button>
+            </form>
+            
+        </div>
+    </body>
+</html>
+
